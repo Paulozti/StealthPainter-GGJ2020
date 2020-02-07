@@ -16,8 +16,11 @@ public class CheckInteraction : MonoBehaviour
     
     void Update()
     {
-        ActionCheck();
-        PaintingLogic();
+        if (!EstadoDeJogo.gameIsPaused)
+        {
+            ActionCheck();
+            PaintingLogic();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,7 +34,7 @@ public class CheckInteraction : MonoBehaviour
         {
             Alert();
             nearInteractive = true;
-            EstadoDeJogo.interactive = collision.gameObject.name;
+            EstadoDeJogo.interactive = collision.gameObject;
         }
         if (collision.CompareTag("Door"))
         {
@@ -94,7 +97,7 @@ public class CheckInteraction : MonoBehaviour
         {
             onMonalisaReEnter?.Invoke();
         }
-        else if (monalisaLoaded && Input.GetButtonDown("Jump"))
+        else if (monalisaLoaded && Input.GetButtonDown("Jump") && nearPainting)
         {
             onMonalisaExit?.Invoke();
         }
@@ -112,7 +115,7 @@ public class CheckInteraction : MonoBehaviour
                 }
             }
 
-            if (nearInteractive && Input.GetButtonDown("Jump"))
+            if (nearInteractive)
             {
                 onPlayerHiding?.Invoke();
             }

@@ -22,20 +22,13 @@ public class Buttons : MonoBehaviour
     {
         Time.timeScale = 1f;
         EstadoDeJogo.gameIsPaused = false;
-        if (EstadoDeJogo.loreOnScreen)
-        {
-            EstadoDeJogo.loreOnScreen = false;
-            SceneManager.UnloadSceneAsync(9);
-        }
-        else
-        {
-            SceneManager.UnloadSceneAsync(8);
-        }
+        SceneManager.UnloadSceneAsync(8);
+        
     }
     
     public void LoreContinue()
     {
-        EstadoDeJogo.loreOnScreen = false;
+        //EstadoDeJogo.loreOnScreen = false;
         EstadoDeJogo.gameIsPaused = false;
 
         SceneManager.LoadScene(1);
@@ -43,7 +36,7 @@ public class Buttons : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(EstadoDeJogo.faseAtual);
+        SceneManager.LoadScene(EstadoDeJogo.faseAtual, LoadSceneMode.Single);
         Time.timeScale = 1f;
         SceneManager.UnloadSceneAsync(8);
     }

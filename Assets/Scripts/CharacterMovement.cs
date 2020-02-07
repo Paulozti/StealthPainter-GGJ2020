@@ -13,11 +13,18 @@ public class CharacterMovement : MonoBehaviour
     public float axisX, axisY;
 
     public GameObject player;
-    public SpriteRenderer armario;
-    public GameObject armarioEntrar;
-    public GameObject armarioDentro;
+    GameObject interactiveGO;
+    SpriteRenderer interactive;
+    GameObject interactiveEntrar;
+    GameObject interactiveDentro;
     private Animator Anim;
     private SpriteRenderer playerSpriteRenderer;
+    
+
+    GameObject interactiveChild0;
+    GameObject interactiveChild1;
+    SpriteRenderer interactiveSR;
+    Vector3 exclamationPosition;
 
     void Start()
     {
@@ -25,11 +32,21 @@ public class CharacterMovement : MonoBehaviour
         CheckInteraction.onMonalisaExit += StartPlayerMovement;
         CheckInteraction.onMonalisaReEnter += StopPlayerMovement;
         CheckInteraction.onPlayerHiding += Hide;
-
+        EstadoDeJogo.playerLight = player.gameObject.transform.GetChild(0).gameObject;
+        EstadoDeJogo.playerExclamation = player.gameObject.transform.GetChild(1).gameObject;
         player_footsteps = player.GetComponent<AudioSource>();
         Anim = GetComponent<Animator>();
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-
+        //interactiveGO = GameObject.Find("Armario");
+        //if(interactiveGO != null)
+        //{
+        //    interactive = interactiveGO.GetComponent<SpriteRenderer>();
+        //    interactiveEntrar = GameObject.Find("ArmarioEntrar");
+        //    interactiveEntrar.SetActive(false);
+        //    interactiveDentro = GameObject.Find("ArmarioDentro");
+        //    interactiveDentro.SetActive(false);
+        //}
+        
     }
 
     void FixedUpdate()
@@ -115,30 +132,57 @@ public class CharacterMovement : MonoBehaviour
 
     private void Hide()
     {
+        interactiveSR = EstadoDeJogo.interactive.GetComponent<SpriteRenderer>();
+        interactiveChild0 = EstadoDeJogo.interactive.transform.GetChild(0).gameObject;
+        interactiveChild1 = EstadoDeJogo.interactive.transform.GetChild(1).gameObject;
+        
         if (canPlayerMove)
         {
-            if(EstadoDeJogo.interactive == "Armario")
-            {
-                canPlayerMove = false;
-                playerSpriteRenderer.enabled = false;
-                armario.enabled = false;
-                armarioEntrar.SetActive(true);
-                armarioEntrar.GetComponent<Animator>().Play(0);
-                armarioDentro.SetActive(true);
-            }
-            
+            EstadoDeJogo.playerLight.transform.SetParent(EstadoDeJogo.interactive.transform);
+            EstadoDeJogo.playerLight.transform.position = EstadoDeJogo.interactive.transform.position;
+            EstadoDeJogo.playerExclamation.gameObject.SetActive(false);
+            canPlayerMove = false;
+            playerSpriteRenderer.enabled = false;
+            interactiveSR.enabled = false;
+            interactiveChild0.SetActive(true);
+            interactiveChild0.GetComponent<Animator>().Play(0);
+            StartCoroutine(DesactivateAnim(false));
         }
         else
         {
-            if (EstadoDeJogo.interactive == "Armario")
-            {
-                canPlayerMove = true;
-                armario.enabled = true;
-                playerSpriteRenderer.enabled = true;
-                armarioEntrar.SetActive(false);
-                armarioDentro.SetActive(false);
-            }
-                
+            EstadoDeJogo.playerLight.transform.SetParent(player.transform);
+            EstadoDeJogo.playerLight.transform.position = player.transform.position;
+            EstadoDeJogo.playerExclamation.gameObject.SetActive(true);
+            canPlayerMove = true;
+            playerSpriteRenderer.enabled = true;
+            interactiveChild1.SetActive(false);
+            interactiveChild0.SetActive(true);
+            interactiveChild0.GetComponent<Animator>().Play(0);
+            StartCoroutine(DesactivateAnim(true));
         }
+    }
+    private void OnDestroy()
+    {
+        CheckInteraction.onMonalisaStart -= StopPlayerMovement;
+        CheckInteraction.onMonalisaExit -= StartPlayerMovement;
+        CheckInteraction.onMonalisaReEnter -= StopPlayerMovement;
+        CheckInteraction.onPlayerHiding -= Hide;
+        player = null;
+        interactive = null;
+    }
+
+    IEnumerator DesactivateAnim(bool leaving)
+    {
+        yield return new WaitForSeconds(0.3f);
+        interactiveChild0.SetActive(false);
+        if (leaving)
+        {
+            interactiveSR.enabled = true;
+        }
+        else
+        {
+            interactiveChild1.SetActive(true);
+        }
+
     }
 }

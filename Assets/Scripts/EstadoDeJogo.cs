@@ -15,9 +15,11 @@ public class EstadoDeJogo : MonoBehaviour
     public static int faseAtualBI;
     public static bool gameIsPaused;
     public static bool gameIsOver;
-    public static bool loreOnScreen;
+    //public static bool loreOnScreen;
     public static bool levelIsStarting;
-    public static string interactive;
+    public static GameObject interactive;
+    public static GameObject playerLight;
+    public static GameObject playerExclamation;
     private bool stopLoading;
 
     private void Start()
@@ -26,7 +28,7 @@ public class EstadoDeJogo : MonoBehaviour
         gameIsOver = false;
         stopLoading = false;
         levelIsStarting = true;
-        loreOnScreen = true;
+        //loreOnScreen = true;
     }
     public void Update()
     {
