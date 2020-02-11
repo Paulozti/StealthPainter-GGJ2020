@@ -108,6 +108,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  guardType:
+  - {fileID: 9100000, guid: a8db451bcf2fc734c9c157b8f082e0e6, type: 2}
+  - {fileID: 9100000, guid: dff9ee4420791ab47b07a4476d09931a, type: 2}
+  - {fileID: 9100000, guid: 909aa2889c5d43c4f9a77b06cfc44263, type: 2}
 --- !u!50 &1891163025102270889
 Rigidbody2D:
   serializedVersion: 4

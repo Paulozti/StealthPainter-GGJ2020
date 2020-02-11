@@ -20,13 +20,17 @@ public class EstadoDeJogo : MonoBehaviour
     public static GameObject interactive;
     public static GameObject playerLight;
     public static GameObject playerExclamation;
-    private bool stopLoading;
+    public enum Language
+    {
+        EN,
+        BR
+    };
+    public static Language gameLanguage;
 
     private void Start()
     {
         gameIsPaused = false;
         gameIsOver = false;
-        stopLoading = false;
         levelIsStarting = true;
         //loreOnScreen = true;
     }
@@ -38,6 +42,10 @@ public class EstadoDeJogo : MonoBehaviour
             gameIsPaused = true;
             Time.timeScale = 0f;
             SceneManager.LoadSceneAsync(8, LoadSceneMode.Additive);
+        }
+        if (quadroAberto)
+        {
+            playerSteps.Stop();
         }
     }
 }

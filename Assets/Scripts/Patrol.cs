@@ -16,6 +16,9 @@ public class Patrol : MonoBehaviour
     public float axisX, axisY;
 
     public Transform[] moveSpots;
+
+    public RuntimeAnimatorController[] guardType;
+
     void Start()
     {
         waitTime = startWaitTime;
@@ -23,6 +26,8 @@ public class Patrol : MonoBehaviour
         numberOfNodes = moveSpots.Length;
         CheckInteraction.onPlayerHiding += HiddenPlayer;
         Anim = GetComponent<Animator>();
+        int guard = Random.Range(0,3);
+        GetComponent<Animator>().runtimeAnimatorController = guardType[guard];
     }
 
     void FixedUpdate()
