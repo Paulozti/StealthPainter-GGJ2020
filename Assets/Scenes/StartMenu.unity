@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -629,7 +629,29 @@ MonoBehaviour:
   m_Group: {fileID: 1184948568}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 911779946}
+        m_MethodName: PT_BR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 911779948}
+        m_MethodName: UpdateLanguage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &505410749
 GameObject:
@@ -1388,6 +1410,9 @@ GameObject:
   - component: {fileID: 911779941}
   - component: {fileID: 911779945}
   - component: {fileID: 911779946}
+  - component: {fileID: 911779949}
+  - component: {fileID: 911779947}
+  - component: {fileID: 911779948}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1500,6 +1525,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98eb3e8e4bb25e408f3da463e593048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &911779947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911779940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa49ec2fed32f6742a0eccdb13d91a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGame_0: {fileID: 1928966047}
+  howToPlay_1: {fileID: 403978672}
+  menuCredits_2: {fileID: 1203985478}
+  credits_3: {fileID: 0}
+  exit_4: {fileID: 1605994641}
+  back_5: {fileID: 0}
+  howToPlayControl_6: {fileID: 0}
+  lore_7: {fileID: 0}
+  pressHere_8: {fileID: 0}
+  closePainting_9: {fileID: 0}
+  repairComplete_10: {fileID: 0}
+  paused_11: {fileID: 0}
+  continueText_12: {fileID: 0}
+  restart_13: {fileID: 0}
+  congratulation_14: {fileID: 0}
+  congratzRestore_15: {fileID: 0}
+--- !u!114 &911779948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911779940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764b243d33b3c0b4eb801f162134a0ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGame: {fileID: 1928966049}
+  howTo: {fileID: 403978674}
+  credit: {fileID: 1203985480}
+  exit: {fileID: 1605994643}
+  EN: {fileID: 1680406173}
+  BR: {fileID: 455521725}
+--- !u!114 &911779949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911779940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c56a5a5664d354eb478a6aec4339b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSteps: {fileID: 0}
 --- !u!1 &1145489666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,15 +1766,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1184948567
-Transform:
+--- !u!224 &1184948567
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184948566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 128.79999, y: 164.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1680406172}
@@ -1698,6 +1782,11 @@ Transform:
   m_Father: {fileID: 911779944}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 4.799988, y: -21.600006}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184948568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2282,7 +2371,29 @@ MonoBehaviour:
   m_Group: {fileID: 1184948568}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 911779946}
+        m_MethodName: EN_US
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 911779948}
+        m_MethodName: UpdateLanguage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1698665346
 GameObject:

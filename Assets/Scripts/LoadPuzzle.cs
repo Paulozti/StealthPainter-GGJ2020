@@ -31,7 +31,7 @@ public class LoadPuzzle : MonoBehaviour
     private void HidePuzzle()
     {
         EstadoDeJogo.quadroAberto = false;
-        Debug.Log("Hiding Scene");
+        //Debug.Log("Hiding Scene");
         GameObject[] sceneObjects = painting.GetRootGameObjects();
         foreach(GameObject obj in sceneObjects)
         {
@@ -42,7 +42,7 @@ public class LoadPuzzle : MonoBehaviour
     private void ShowPuzzle()
     {
         EstadoDeJogo.quadroAberto = true;
-        Debug.Log("Showing Scene");
+        //Debug.Log("Showing Scene");
         GameObject[] sceneObjects = painting.GetRootGameObjects();
         foreach (GameObject obj in sceneObjects)
         {

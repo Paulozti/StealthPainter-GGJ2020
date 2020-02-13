@@ -25,7 +25,7 @@ public class EstadoDeJogo : MonoBehaviour
         EN,
         BR
     };
-    public static Language gameLanguage;
+    public static Language gameLanguage = Language.BR;
 
     private void Start()
     {
