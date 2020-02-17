@@ -8,6 +8,7 @@ public class EstadoDeJogo : MonoBehaviour
     }
 
     public AudioSource playerSteps;
+    public AudioSource backgroundmusic;
 
     public static bool quadroAberto;
     public static bool podeProsseguirFase;
@@ -20,6 +21,7 @@ public class EstadoDeJogo : MonoBehaviour
     public static GameObject interactive;
     public static GameObject playerLight;
     public static GameObject playerExclamation;
+    public static bool returnMusic = false;
     public enum Language
     {
         EN,
@@ -39,6 +41,7 @@ public class EstadoDeJogo : MonoBehaviour
         if (Input.GetButtonDown("Cancel") && !gameIsPaused)
         {
             playerSteps.Stop();
+            backgroundmusic.Pause();
             gameIsPaused = true;
             Time.timeScale = 0f;
             SceneManager.LoadSceneAsync(8, LoadSceneMode.Additive);
@@ -46,6 +49,11 @@ public class EstadoDeJogo : MonoBehaviour
         if (quadroAberto)
         {
             playerSteps.Stop();
+        }
+        if (returnMusic)
+        {
+            backgroundmusic.UnPause();
+            returnMusic = false;
         }
     }
 }

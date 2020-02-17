@@ -197,6 +197,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 7513455629013319503, guid: 28eb8fc0549fc294686a92372f1ddb97,
+        type: 3}
+      propertyPath: backgroundmusic
+      value: 
+      objectReference: {fileID: 1489935443}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28eb8fc0549fc294686a92372f1ddb97, type: 3}
 --- !u!1001 &56944722

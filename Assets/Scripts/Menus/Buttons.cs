@@ -22,6 +22,7 @@ public class Buttons : MonoBehaviour
     {
         Time.timeScale = 1f;
         EstadoDeJogo.gameIsPaused = false;
+        EstadoDeJogo.returnMusic = true;
         SceneManager.UnloadSceneAsync(8);
         
     }
@@ -44,6 +45,7 @@ public class Buttons : MonoBehaviour
     public void HowToPlay()
     {
         SceneManager.LoadScene("HowToPlay");
+        //SceneManager.LoadScene(7); Debug da ultima fase
     }
 
     public void Credits()
